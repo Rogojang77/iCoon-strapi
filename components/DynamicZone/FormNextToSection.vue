@@ -40,8 +40,9 @@ const state = reactive({
 });
 
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "Heading"));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "SubHeading"));
+const headingConfigString = {}
+const subHeadingConfigString = {}
+
 const formConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'Form'));
 
 </script>
@@ -52,10 +53,10 @@ const formConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'For
       <div class="mx-auto w-full max-w-md">
         <!-- Heading Section -->
         <div class="text-center mb-8 mx-auto">
-          <Heading v-if="heading" :class="headingConfig?.value?.class">
+          <Heading v-if="heading" :class="headingConfigString">
             {{ heading }}
           </Heading>
-          <SubHeading v-if="sub_heading" :class="subHeadingConfig?.value?.class">
+          <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
             {{ sub_heading }}
           </SubHeading>
         </div>

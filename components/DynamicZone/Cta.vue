@@ -24,8 +24,8 @@ const { heading, sub_heading, CTAs, section_classes, nuxt_ui_configs } = defineP
 });
 
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "Heading"));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "SubHeading"));
+const headingConfigString = computed(() => JSON.parse(JSON.stringify(getConfigByComponentName(nuxt_ui_configs, "Heading").class)));
+const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfigByComponentName(nuxt_ui_configs, "SubHeading").class)));
 
 </script>
 
@@ -38,11 +38,11 @@ const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs
     }"
   >
     <!-- Heading Section -->
-    <div class="text-center mb-8 mx-auto">
-      <Heading v-if="heading" :class="headingConfig?.value?.class">
+    <div class="mb-8">
+      <Heading v-if="heading" :class="headingConfigString">
         {{ heading }}
       </Heading>
-      <SubHeading v-if="sub_heading" :class="subHeadingConfig?.value?.class">
+      <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
         {{ sub_heading }}
       </SubHeading>
     </div>

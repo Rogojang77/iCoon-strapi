@@ -25,19 +25,18 @@ const { heading, sub_heading, products, section_classes, nuxt_ui_configs } = def
 });
 
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "Heading"));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "SubHeading"));
-
+const headingConfigString = {}
+const subHeadingConfigString = {}
 
 </script>
 
 <template>
   <!-- Heading Section -->
   <div class="text-center my-8 mx-auto">
-    <Heading v-if="heading" :class="headingConfig?.value?.class">
+    <Heading v-if="heading" :class="headingConfigString">
       {{ heading }}
     </Heading>
-    <SubHeading v-if="sub_heading" :class="subHeadingConfig?.value?.class">
+    <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
       {{ sub_heading }}
     </SubHeading>
   </div>

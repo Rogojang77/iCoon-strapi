@@ -27,11 +27,9 @@ const { heading, sub_heading, blurbs, columns_per_row, section_classes, nuxt_ui_
   },
 });
 
-console.log("blurbs", blurbs);
-
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "Heading"));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "SubHeading"));
+const headingConfigString = {}
+const subHeadingConfigString = {}
 
 // Calculate the Tailwind grid class
 const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
@@ -48,10 +46,10 @@ const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-$
   >
     <!-- Heading Section -->
     <div class="text-center mb-8 mx-auto">
-      <Heading v-if="heading" :class="headingConfig?.value?.class">
+      <Heading v-if="heading" :class="headingConfigString">
         {{ heading }}
       </Heading>
-      <SubHeading v-if="sub_heading" :class="subHeadingConfig?.value?.class">
+      <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
         {{ sub_heading }}
       </SubHeading>
     </div>

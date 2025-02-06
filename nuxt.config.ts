@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     },
     strapi: {
         // Options
-        url: process.env.STRAPI_URL || 'https://strapi.inft.ro',
+        url: process.env.STRAPI_URL || 'https://icoonapi.inft.ro',
         prefix: '/api',
         admin: '/admin',
         version: 'v5',
@@ -36,9 +36,9 @@ export default defineNuxtConfig({
     },
     image: {
         format: ['webp'],
-        domains: ['strapi.inft.ro'],
+        domains: ['icoonapi.inft.ro'],
         strapi: {
-            baseURL: 'https://strapi.inft.ro/'
+            baseURL: 'https://icoonapi.inft.ro/'
         }
     },
     routeRules: {

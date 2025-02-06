@@ -93,7 +93,7 @@
 
       <div class="flex items-center space-x-4">
         
-        <div class="relative language-dropdown">
+        <!-- <div class="relative language-dropdown">
           <UButton 
             :ui="{ rounded: 'rounded-full', base: 'bg-gray-200 hover:bg-gray-300' }" 
             @click="toggleLanguageDropdown" 
@@ -121,7 +121,7 @@
               </NuxtLink>
             </li>
           </ul>
-        </div>
+        </div> -->
 
         <div class="flex space-x-2">
           <UButton

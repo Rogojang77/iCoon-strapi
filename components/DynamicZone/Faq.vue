@@ -24,8 +24,8 @@ const { heading, sub_heading, faqs, section_classes, nuxt_ui_configs } = defineP
 })
 
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "Heading"));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "SubHeading"));
+const headingConfigString = {}
+const subHeadingConfigString = {}
 const accordionConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, "UAccordion"));
 
 </script>
@@ -34,10 +34,10 @@ const accordionConfig = computed(() => getConfigByComponentName(nuxt_ui_configs,
   <UContainer class="py-10">
     <!-- Heading Section -->
     <div class="text-center mb-8 mx-auto">
-      <Heading v-if="heading" :class="headingConfig?.value?.class">
+      <Heading v-if="heading" :class="headingConfigString">
         {{ heading }}
       </Heading>
-      <SubHeading v-if="sub_heading" :class="subHeadingConfig?.value?.class">
+      <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
         {{ sub_heading }}
       </SubHeading>
     </div>

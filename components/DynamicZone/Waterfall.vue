@@ -48,8 +48,8 @@ const { heading, sub_heading, text, media, mirror, fullWidth, CTAs, form, sectio
 });
 
 // Dynamic UI configurations
-const headingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'Heading'));
-const subHeadingConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'SubHeading'));
+const headingConfigString = computed(() => JSON.parse(JSON.stringify(getConfigByComponentName(nuxt_ui_configs, "Heading").class)));
+const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfigByComponentName(nuxt_ui_configs, "SubHeading").class)));
 const textConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'Text'));
 const carouselConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'Carousel'));
 const formConfig = computed(() => getConfigByComponentName(nuxt_ui_configs, 'Form'));
@@ -67,7 +67,6 @@ const singleColumn = computed(() => {
 const formWithMedia = computed(() => {
   return (form && media);
 });
-
 </script>
 
 <template>
@@ -126,7 +125,6 @@ const formWithMedia = computed(() => {
           class="w-full h-full"
           :src="useStrapiImage(item.url)"
           :alt="item.alt || 'Media Video'"
-          :data-setup="videoOptions"
         >
         </video>
       </div>
