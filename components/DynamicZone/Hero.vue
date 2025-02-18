@@ -37,7 +37,7 @@ const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfi
     <UContainer
         :class='[section_classes || "h-screen overflow-hidden relative flex flex-col items-center justify-center"]'
         :ui="{ constrained: 'max-w-full',
-            padding: 'px-0 sm:px-0 lg:px-0'
+            padding: ''
         }"
         :style="{ background: `url(${useStrapiImage(background_image?.url)}) no-repeat center center/cover` }"
     >

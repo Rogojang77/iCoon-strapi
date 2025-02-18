@@ -55,7 +55,6 @@ export default defineAppConfig({
         color: 'gray',
       },
       color: {
-        gray: 'bg-gray-200 text-slate-800',
         blue: 'bg-blue-200 text-blue-800',
       },
     },
@@ -85,11 +84,11 @@ export default defineAppConfig({
       },
       color: {
         primary: {
-          solid: "bg-primary-500 text-white dark:text-neutral-900 hover:bg-primary-600 focus:ring-primary-500 dark:bg-primary-500",
+          solid: "bg-primary-500 text-white dark:text-neutral-900 hover:bg-primary-600 dark:bg-primary-500",
           outline: "text-primary-500 dark:text-neutral-900 border-2 border-primary-500 hover:bg-primary-50 dark:border-primary-500"
         },
         secondary: {
-          solid: "bg-secondary-500 text-white  dark:text-neutral-900 hover:bg-secondary-600 focus:ring-secondary-500 dark:bg-secondary-500",
+          solid: "bg-secondary-500 text-white  dark:text-neutral-900 hover:bg-secondary-600 dark:bg-secondary-500",
           outline: "text-secondary-500 dark:text-neutral-900 border-2 border-secondary-500 hover:bg-secondary-500 dark:border-secondary-500"
         }
       },
@@ -175,7 +174,7 @@ export default defineAppConfig({
     // Container
     container: {
       strategy: 'merge',
-      base: 'container sm:container mx-auto',
+      base: '',
       padding: 'px-6 sm:px-8 lg:px-10',
       constrained: 'max-w-screen-lg',
     },

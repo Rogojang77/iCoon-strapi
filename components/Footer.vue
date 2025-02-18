@@ -39,7 +39,14 @@
 </script>
 
 <template>
-  <UContainer class="relative overflow-hidden w-full bg-white dark:bg-slate-950 text-slate-950 dark:text-white">
+  <UContainer class="relative overflow-hidden w-full bg-white dark:bg-slate-950 text-slate-950 dark:text-white"
+    :ui="{
+      strategy: 'override',
+      base: 'container sm:container mx-auto gap-32 sm:gap-18',
+      padding: 'px-24 py-0 sm:px-10 lg:px-24',
+      constrained: 'max-w-full w-full',
+    }"
+    >
     <div class="border-t pt-20 pb-32 relative">
       <div class="mx-auto text-sm text-black flex sm:flex-row flex-col justify-between items-start">
         <div>

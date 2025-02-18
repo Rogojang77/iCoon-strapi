@@ -33,8 +33,8 @@ const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfi
 <template>
   <UContainer
     :ui="{
-      base: section_classes ? section_classes : 'relative flex flex-col justify-between items-center',
-      padding: 'py-20 sm:py-12 md:py-16 lg:py-20',
+      base: section_classes ? section_classes : 'relative flex flex-col justify-between items-center py-20 sm:py-12 md:py-16 lg:py-20',
+      padding: '',
     }"
   >
     <!-- Heading Section -->

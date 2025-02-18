@@ -32,7 +32,7 @@ const headingConfigString = {}
 const subHeadingConfigString = {}
 
 // Calculate the Tailwind grid class
-const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
+const gridClass = computed(() => `grid justify-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
 
 
 </script>
@@ -72,7 +72,7 @@ const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-$
         </template>
 
         <!-- Content Section -->
-        <div>
+        <div v-if="blurb.heading !== '' || blurb.text !== ''">
           <Heading
             v-if="blurb.heading" as="h3"
             class= 'text-left font-semibold mb-2 text-md sm:text-lmd md:text-md lg:text-xl xl:text-2xl dark:text-slate-200'
@@ -85,22 +85,6 @@ const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-$
           >
             {{ blurb.text }}
           </p>
-          <div v-if="blurb.buttons?.length > 0 && blurb.image_left">
-            <UButton
-              v-for="button in blurb.buttons"
-              :target="button.target"
-              :key="button.id"
-              :to="button.URL"
-              :variant="button.variant || 'solid'"
-              :size="button.size || 'md'"
-              :color="button.color || 'primary'"
-              :icon="button.icon"
-              :trailing="button.trailing"
-              :ui="button.nuxt_ui_config?.json_data || {}"
-            >
-              {{ button.text }}
-            </UButton>
-          </div>
         </div>
 
         <template v-if="blurb.buttons?.length > 0 && !blurb.image_left" #footer>

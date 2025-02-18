@@ -18,6 +18,7 @@
     "@vueuse/motion": "^2.2.6",
     "date-fns": "^4.1.0",
     "nuxt": "^3.13.0",
+    "swiper": "^11.2.4",
     "vue": "latest",
     "vue-router": "latest",
     "vue-wrap-balancer": "^1.2.1"

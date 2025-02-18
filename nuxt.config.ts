@@ -10,7 +10,8 @@ export default defineNuxtConfig({
         '@unocss/nuxt',
         '@nuxt/image',
         '@nuxt/ui',
-        '@nuxtjs/i18n'
+        '@nuxtjs/i18n',
+        '@nuxtjs/tailwindcss'
     ],
     components: [
         { path: '~/components/Elements' },
