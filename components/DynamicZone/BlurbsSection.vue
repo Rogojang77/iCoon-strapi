@@ -32,7 +32,7 @@ const headingConfigString = {}
 const subHeadingConfigString = {}
 
 // Calculate the Tailwind grid class
-const gridClass = computed(() => `grid justify-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
+const gridClass = computed(() => `grid justify-center justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
 
 
 </script>
@@ -40,8 +40,9 @@ const gridClass = computed(() => `grid justify-center grid-cols-1 sm:grid-cols-2
 <template>
   <UContainer
     :ui="{
+      strategy: 'override',
       base: section_classes ? section_classes : 'py-10',
-      padding: 'px-4 sm:px-6 md:px-8 lg:px-10',
+      padding: '',
     }"
   >
     <!-- Heading Section -->

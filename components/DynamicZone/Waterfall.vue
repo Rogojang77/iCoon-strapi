@@ -1,7 +1,6 @@
 <script setup>
 
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination } from 'swiper/modules';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -152,9 +151,9 @@ const secondColumnWidthClass = computed(() => {
       </div>
     </div>
 
-    <!-- Media Section -->
+ <!-- Media Section -->
     <div v-if="media && media.length > 0"
-      :class="['max-h-full', formWithMedia && mirror ? secondColumnWidthClass : !mirror ? secondColumnWidthClass : '', singleColumn ? 'w-full' : 'w-full flex justify-end']"
+      :class="[singleColumn ? 'w-full' : 'w-full sm:w-2/4']"
     > 
       <div v-if="media[0].mime.includes('video')" class="w-full h-full">
         <video v-for="(item, index) in media" :key="index"
@@ -167,21 +166,16 @@ const secondColumnWidthClass = computed(() => {
         >
         </video>
       </div>
-
-      <swiper
-        :direction="'vertical'"
-        :spaceBetween="200"
-        class="waterfall_swiper sm:w-lg sm:h-lg md:w-2xl md:h-2xl lg:w-xl lg:h-xl xl:h-3xl xl:w-3xl 2xl:h-4xl 2xl:w-4xl  rounded-full flex items-center justify-center"
+      <UCarousel v-else v-slot="{ item }" :items="media"
+        :ui="carouselConfig.value?.ui"
       >
-        <swiper-slide v-for="(item, index) in media" :key="index">
-          <NuxtPicture
-            :src="useStrapiImage(item.url)"
-            :alt="item.alt || 'Media Image'"
-            class="overflow-hidden w-full h-full rounded-full"
-            :img-attrs="img_attrs || { class: 'object-cover w-full h-full' }"
-          />
-        </swiper-slide>
-      </swiper>
+        <NuxtPicture
+          :src="useStrapiImage(item.url)"
+          :alt="item.alt || 'Media Image'"
+          class="overflow-hidden w-full h-full"
+          :img-attrs="img_attrs || { class: 'object-cover w-full h-full' }"
+        />
+      </UCarousel>
     </div>
 
 
@@ -197,9 +191,19 @@ const secondColumnWidthClass = computed(() => {
           {{ sub_heading }}
         </SubHeading>
       </div>
-      <UForm :state="state" class="w-full space-y-4">
-        <UFormGroup v-for="(input, index) in form?.inputs" :label="input.type !== 'submit' ? input.name : ''" :key="index" :name="input.name">
-          <div class="mt-2">
+      <UForm :state="state" class="w-full space-y-4 flex flex-wrap items-center justify-between">
+        <UFormGroup 
+          v-for="(input, index) in form?.inputs" 
+          :key="index" 
+          :name="input.name" 
+          :class="[
+            input.type !== 'textarea' ? 'w-48/100 mt-4' : 'w-full mt-4', 
+            input.type === 'submit' ? 'flex justify-end' : ''
+          ]"
+          :ui="{
+            placeholder: 'placeholder-black dark:placeholder-gray-500',
+          }"
+        >
             <UInput
               v-if="['text', 'email', 'password', 'color', 'date', 'datetime-local', 'file', 'image', 'month', 'number', 'range', 'search', 'tel', 'time', 'url', 'week'].includes(input.type)"
               :type="input.type"
@@ -207,12 +211,22 @@ const secondColumnWidthClass = computed(() => {
               :placeholder="input.placeholder"
               :value="input.value"
               v-model="state[input.name]"
+              color="black"
+              :ui="{
+                base: 'focus:outline-none w-full',
+                rounded: 'rounded-full',
+              }"
             />
             <UTextarea 
               v-if="input.type === 'textarea'"
               :name="input.name"
               :placeholder="input.placeholder"
               v-model="state[input.name]"
+              class="w-full"
+              :ui="{
+                base: 'focus:outline-none w-full',
+                rounded: 'rounded-2xl',
+              }"
             ></UTextarea>
             <URadioGroup
               v-if="input.type === 'radio'"
@@ -232,51 +246,20 @@ const secondColumnWidthClass = computed(() => {
               :name="input.name"
               :label="input.name"
               v-model="state[input.name]"
+              :ui="{
+                rounded: 'rounded-full'
+              }"
             >
             </UCheckbox>
             <UButton
               v-if="input.type === 'submit' || input.type === 'button'"
               :type="input.type === 'submit' ? 'submit' : 'button'"
+              class="flex bg-black rounded-full font-light tracking-wider px-8"
             >
               {{ input.name }}
             </UButton>
-          </div>
-        </UFormGroup>
+          </UFormGroup>
       </UForm>
     </div>
   </UContainer>
 </template>
-
-<style scoped>
-
-:deep(.swiper.waterfall_swiper) {
-  background: #fff;
-  box-shadow: -17px 0px 50px -31px rgba(0, 0, 0, 0.2);
-  margin-left: none !important;
-  margin-right: none !important;
-}
-
-:deep(.waterfall_swiper .swiper-slide) {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-:deep(.waterfall_swiper .swiper-slide) {
-  padding: 10%;
-  overflow: hidden !important;
-}
-
-:deep(.waterfall_swiper .swiper-slide img) {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-
-</style>

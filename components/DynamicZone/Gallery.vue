@@ -41,7 +41,7 @@ const { media, section_classes } = defineProps({
         <NuxtPicture
           :src="useStrapiImage(item.image.url)"
           :alt="item.alt || 'Media Image'"
-          class="object-cover overflow-hidden"
+          class="object-cover overflow-hidden" 
         />
         <h3 v-if="item.title" class="text-lg font-bold mt-2">
           {{ item.title }}
@@ -117,10 +117,10 @@ const { media, section_classes } = defineProps({
   object-fit: cover;
   border: 4px solid white;
   border-radius: 10px;
-  box-shadow: -20px 0px 18px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: -10px 0px 18px -7px rgba(0, 0, 0, 0.2);
 }
 
-/* :deep(.gallery_swiper .swiper-button-prev) {
-
-} */
+:deep(.gallery_swiper .swiper-slide-active img) {
+  box-shadow: -20px 0px 18px -7px rgba(0, 0, 0, 0.2);
+}
 </style>

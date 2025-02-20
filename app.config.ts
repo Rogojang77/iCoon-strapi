@@ -258,12 +258,12 @@ export default defineAppConfig({
     // Input
     input: {
       wrapper: 'relative',
-      base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 text-slate-700 dark:text-slate-200',
+      base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 text-slate-900 dark:text-slate-300',
       form: 'form-input',
       rounded: 'rounded-md',
-      placeholder: 'placeholder-slate-400 dark:placeholder-slate-500',
+      placeholder: 'placeholder-slate-900 dark:placeholder-slate-400',
       file: {
-        base: 'file:mr-1.5 file:font-medium file:text-slate-500 dark:file:text-slate-400 file:bg-transparent file:border-0 file:p-0 file:outline-none'
+        base: 'file:mr-1.5 file:font-medium file:text-slate-900 dark:file:text-slate-400 file:bg-transparent file:border-0 file:p-0 file:outline-none'
       },
       size: {
         '2xs': 'text-xs',
@@ -497,7 +497,7 @@ export default defineAppConfig({
       wrapper: 'relative',
       base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 text-slate-700 dark:text-slate-200',
       rounded: 'rounded-md',
-      placeholder: 'placeholder-slate-400 dark:placeholder-slate-500',
+      placeholder: 'placeholder-slate-900 dark:placeholder-slate-400',
       file: {
         base: 'file:mr-1.5 file:font-medium file:text-slate-500 dark:file:text-slate-400 file:bg-transparent file:border-0 file:p-0 file:outline-none'
       },
