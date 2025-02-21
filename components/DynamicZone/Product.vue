@@ -81,7 +81,6 @@ const swiperInstance = ref(null); // Store Swiper instance
 
 const onSwiper = (swiper) => {
   swiperInstance.value = swiper; // Assign the Swiper instance properly
-  console.log("Swiper initialized:", swiper);
 };
 
 const slideToColor = (index) => {

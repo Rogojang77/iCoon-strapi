@@ -42,6 +42,7 @@ export default {
     "basis-2/4",
     "basis-3/4",
     "basis-1/4",
+    "z-1",
 
     // Spacing & Padding
     "pb-0",
@@ -72,8 +73,16 @@ export default {
     "pr-24",
     "pl-24",
     "sm:p-6",
+    "p-64",
     "pt-96",
     "pb-96",
+    "absolute",
+    "right-0",
+    "z-0",
+    "z-1",
+    "shadow",
+    "rounded-r-full",
+    "bh-white",
 
     // Typography
     "text-left",
@@ -130,7 +139,6 @@ export default {
     // Icons & Misc
     "ms-auto",
     "transform",
-    "overflow-hidden",
     "w-40",
     "break-all",
     "line-clamp-1",

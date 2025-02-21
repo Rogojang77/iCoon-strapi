@@ -39,7 +39,7 @@ const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfi
             strategy: 'override',
             base: section_classes || '',
             constrained: 'max-w-full',
-            padding: 'py-82'
+            padding: 'py-[15vh]'
         }"
         :style="{ background: `url(${useStrapiImage(background_image?.url)}) no-repeat center center/cover` }"
     >

@@ -31,22 +31,19 @@ const { heading, sub_heading, blurbs, columns_per_row, section_classes, nuxt_ui_
 const headingConfigString = {}
 const subHeadingConfigString = {}
 
-// Calculate the Tailwind grid class
-const gridClass = computed(() => `grid justify-center justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
-
+const gridClass = computed(() => `container sm:container mx-auto grid justify-center justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
 
 </script>
 
 <template>
-  <UContainer
+  <UContainer 
     :ui="{
       strategy: 'override',
-      base: section_classes ? section_classes : 'py-10',
-      padding: '',
+      base: 'container sm:container mx-auto',
+      padding: 'py-48'
     }"
   >
-    <!-- Heading Section -->
-    <div class="text-center mb-8 mx-auto">
+    <div v-if="heading || sub_heading" class="text-center mb-8 mx-auto">
       <Heading v-if="heading" :class="headingConfigString">
         {{ heading }}
       </Heading>
@@ -54,9 +51,14 @@ const gridClass = computed(() => `grid justify-center justify-items-center grid-
         {{ sub_heading }}
       </SubHeading>
     </div>
-
-    <!-- Blurbs Section -->
-    <div :class="gridClass">
+    <UContainer
+      :ui="{
+        strategy: 'override',
+        base: section_classes ? section_classes : gridClass,
+        padding: '',
+      }"
+    >
+      <!-- Blurbs Section -->
       <UCard
         v-for="(blurb) in blurbs"
         :key="blurb.id"
@@ -105,6 +107,6 @@ const gridClass = computed(() => `grid justify-center justify-items-center grid-
           </UButton>
         </template>
       </UCard>
-    </div>
+    </UContainer>
   </UContainer>
 </template>
