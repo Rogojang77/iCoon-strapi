@@ -97,25 +97,22 @@ const slideToColor = (index) => {
 
 <template>
   <UContainer
-    :class="[
-      section_classes, 'flex items-center justify-between',
-      mirror ? 'flex-col sm:flex-row-reverse' : 'flex-col lg:flex-row', 
-    ]"
     :ui="{
       strategy: 'override',
-      base: 'container sm:container mx-auto gap-32 sm:gap-18',
-      padding: 'py-8',
+      base: [section_classes, mirror ? 'flex-col sm:flex-row-reverse' : 'flex-col lg:flex-row', 'container ' ],
     }"
   >
     <!-- Text Section -->
-    <div :class="[firstColumnWidthClass, textConfig.value?.class, 'px-0']">
+    <div :class="[firstColumnWidthClass]">
+
       <!-- Heading -->
-      <Heading v-if="heading" size="md" :className="headingConfigString || 'text-center sm:text-left'">
+      <Heading v-if="heading" size="md" :className="headingConfigString || 'text-center sm:text-left mb-6 sm:mb-4'">
         {{ heading }}
       </Heading>
       <p>
         {{ description }}
       </p>
+
       <!-- Color Selctor -->
       <div class="flex">
         <a 
@@ -132,8 +129,8 @@ const slideToColor = (index) => {
             :style="{ backgroundColor: item.product_color.toLowerCase() }"
           ></div>
         </a>
-
       </div>
+
       <!-- CTA Buttons -->
       <div class="flex space-x-2 mt-8 items-center justify-center lg:justify-left xl:justify-left">
         <UButton
@@ -161,7 +158,7 @@ const slideToColor = (index) => {
         :direction="'vertical'"
         :spaceBetween="200"
         @swiper="onSwiper"
-        class="product_swiper sm:w-lg sm:h-lg md:w-2xl md:h-2xl lg:w-xl lg:h-xl xl:h-3xl xl:w-3xl 2xl:h-4xl 2xl:w-4xl rounded-full flex items-center justify-center"
+        class="product_swiper w-lg h-lg sm:w-lg sm:h-lg md:w-2xl md:h-2xl lg:w-xl lg:h-xl xl:h-3xl xl:w-3xl 2xl:h-4xl 2xl:w-4xl rounded-full flex items-center justify-center"
       >
         <swiper-slide v-for="(item, index) in media" :key="index">
           <NuxtPicture
@@ -180,7 +177,7 @@ const slideToColor = (index) => {
 <style scoped>
 :deep(.swiper.product_swiper) {
   background: #fff;
-  box-shadow: -17px 0px 50px -31px rgba(0, 0, 0, 0.2);
+  box-shadow: -30px 0px 50px -31px rgba(0, 0, 0, 0.2);
   margin-left: none !important;
   margin-right: none !important;
 }

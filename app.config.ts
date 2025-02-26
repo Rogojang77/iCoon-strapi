@@ -176,7 +176,7 @@ export default defineAppConfig({
       strategy: 'merge',
       base: '',
       padding: 'px-6 sm:px-8 lg:px-10',
-      constrained: 'max-w-screen-lg',
+      constrained: '',
     },
 
     // ContextMenu

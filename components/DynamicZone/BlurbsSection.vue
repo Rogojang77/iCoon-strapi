@@ -39,8 +39,8 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
   <UContainer 
     :ui="{
       strategy: 'override',
-      base: 'container sm:container mx-auto',
-      padding: 'py-48'
+      base: '',
+      padding: ''
     }"
   >
     <div v-if="heading || sub_heading" class="text-center mb-8 mx-auto">
@@ -55,7 +55,7 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
       :ui="{
         strategy: 'override',
         base: section_classes ? section_classes : gridClass,
-        padding: '',
+        padding: 'px-8 lg:px-0',
       }"
     >
       <!-- Blurbs Section -->

@@ -28,11 +28,6 @@ const gridClass = computed(() => `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-$
 // Dynamic UI configurations
 const headingConfigString = {}
 const subHeadingConfigString = {}
-
-const onClick = (plan) => {
-  console.log('Clicked plan:', plan)
-}
-
 </script>
 
 <template>

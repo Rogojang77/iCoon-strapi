@@ -83,12 +83,6 @@
             {{ item.text }}
           </NuxtLink>
         </nav>
-
-        <UButton  @click="toggleMobileMenu" class="md:hidden" variant="ghost" >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </UButton>
       </div>
 
       <div class="flex items-center space-x-4">
@@ -123,7 +117,7 @@
           </ul>
         </div> -->
 
-        <div class="flex space-x-2">
+        <div v-if="!isMobileMenuOpen" class="hidden md:flex space-x-2">
           <UButton
             v-for="(item, index) in right_navbar_items"
             :key="item.id"
@@ -151,12 +145,17 @@
           </ClientOnly>
         </div>
       </div>
+      <UButton  @click="toggleMobileMenu" class="md:hidden" variant="ghost" >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </UButton>
     </div>
 
     <div v-if="isMobileMenuOpen" class="md:hidden bg-gray-100 shadow-lg">
       <nav class="flex flex-col space-y-2 py-4 px-4">
         <NuxtLink
-          v-for="item in left_navbar_items"
+          v-for="item in right_navbar_items"
           :key="item.text"
           :href="localePath(item.URL)"
           :target="item.target"

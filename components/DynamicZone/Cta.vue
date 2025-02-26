@@ -33,12 +33,13 @@ const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfi
 <template>
   <UContainer
     :ui="{
-      base: section_classes ? section_classes : 'relative flex flex-col justify-between items-center py-20 sm:py-12 md:py-16 lg:py-20',
+      strategy: 'override',
+      base: [section_classes ? section_classes : 'relative flex flex-col md:flex-row justify-between items-center py-20 sm:py-12 md:py-16 lg:py-20'],
       padding: '',
     }"
   >
     <!-- Heading Section -->
-    <div class="mb-8">
+    <div>
       <Heading v-if="heading" :class="headingConfigString">
         {{ heading }}
       </Heading>
@@ -46,7 +47,7 @@ const subHeadingConfigString = computed(() => JSON.parse(JSON.stringify(getConfi
         {{ sub_heading }}
       </SubHeading>
     </div>
-    <div class="flex space-x-2 items-center mt-8">
+    <div class="flex space-x-2 items-center">
       <UButton
         v-for="button in CTAs"
         :target="button.target"
