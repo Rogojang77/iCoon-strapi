@@ -45,7 +45,7 @@ const singleColumn = computed(() => {
   return !section.length === 0;
 });
 
-console.log(singleColumn)
+console.log(section)
 
 const columnWidthMap = {
   "1/2": "basis-1/2",
@@ -58,7 +58,7 @@ const columnWidthMap = {
 };
 
 function getColumnWidthClasses(columnWidth) {
-  return columnWidthMap[columnWidth] || "basis-1/2"
+  return columnWidthMap[columnWidth] || ""
 }
 
 </script>
@@ -89,7 +89,7 @@ function getColumnWidthClasses(columnWidth) {
           singleColumn.value ? 'flex-col' : 'flex items-center', 
           mirror ? 'flex items-center flex-col sm:flex-row-reverse' : 'flex items-center flex-col lg:flex-row', 
         ],
-        padding: fullWidth ? 'px-0 py-24' : 'py-24 px-8',
+        padding: fullWidth ? 'px-0 py-24' : '',
       }"
     >
         <!-- Col -->
@@ -123,7 +123,7 @@ function getColumnWidthClasses(columnWidth) {
           </UButton>
         </div>
         <!-- Media -->
-        <div v-if="column.media" class="w-full"> 
+        <div v-if="column.media" class="w-full h-full"> 
           <!-- <div v-if="column.media[0].image.mime.includes('video')" class="w-full h-full">
             <video v-for="(item, index) in column.media" :key="index"
               type='video/mp4'
@@ -140,8 +140,8 @@ function getColumnWidthClasses(columnWidth) {
             <NuxtPicture
               :src="useStrapiImage(item.url)"
               :alt="item.alt || 'Media Image'"
-              class="overflow-hidden w-full h-full"
-              :img-attrs="item.img_attrs || { class: 'object-cover w-full h-full' }"
+              :class="column.media.img_attrs.class ? column.media.img_attrs.class : 'overflow-hidden w-full'"
+              :img-attrs="column.media.img_attrs ? column.media.img_attrs : { class: 'object-cover object-center w-full h-full' }"
             />
           </UCarousel>
         </div>

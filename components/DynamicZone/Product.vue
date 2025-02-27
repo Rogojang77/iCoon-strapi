@@ -158,7 +158,7 @@ const slideToColor = (index) => {
         :direction="'vertical'"
         :spaceBetween="200"
         @swiper="onSwiper"
-        class="product_swiper w-lg h-lg sm:w-lg sm:h-lg md:w-2xl md:h-2xl lg:w-xl lg:h-xl xl:h-3xl xl:w-3xl 2xl:h-4xl 2xl:w-4xl rounded-full flex items-center justify-center"
+        class="product_swiper w-[90vw] h-[90vw] lg:w-[90vh] lg:h-[90vh] rounded-full flex items-center justify-center"
       >
         <swiper-slide v-for="(item, index) in media" :key="index">
           <NuxtPicture
