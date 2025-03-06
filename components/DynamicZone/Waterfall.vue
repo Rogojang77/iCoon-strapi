@@ -45,8 +45,6 @@ const singleColumn = computed(() => {
   return !section.length === 0;
 });
 
-console.log(section)
-
 const columnWidthMap = {
   "1/2": "basis-1/2",
   "1/3": "basis-1/3",
