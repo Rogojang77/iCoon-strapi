@@ -54,7 +54,7 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
     <UContainer
       :ui="{
         strategy: 'override',
-        base: [section_classes, gridClass],
+        base: [section_classes, gridClass,],
         padding: 'px-8 xl:px-0',
       }"
     >
