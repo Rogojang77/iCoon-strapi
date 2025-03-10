@@ -27,6 +27,8 @@ const { heading, sub_heading, blurbs, columns_per_row, section_classes, nuxt_ui_
   },
 });
 
+console.log(!(blurbs[1].heading === null && blurbs[1].text === null))
+
 // Dynamic UI configurations
 const headingConfigString = {}
 const subHeadingConfigString = {}
@@ -75,7 +77,7 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
         </template>
 
         <!-- Content Section -->
-        <div v-if="blurb.heading !== '' || blurb.text !== ''">
+        <template v-if="!(blurb.heading === null && blurb.text === null)" class="flex flex-col" #default>
           <Heading
             v-if="blurb.heading" as="h3"
             class= 'text-left font-semibold mb-2 text-md sm:text-lmd md:text-md lg:text-xl xl:text-2xl dark:text-slate-200'
@@ -84,11 +86,11 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
           </Heading>
           <p
             v-if="blurb.text"
-            class="text-left text-slate-800 dark:text-slate-200 mb-4"
+            class="text-center text-slate-800 mb-4"
           >
             {{ blurb.text }}
           </p>
-        </div>
+        </template>
 
         <template v-if="blurb.buttons?.length > 0 && !blurb.image_left" #footer>
           <UButton

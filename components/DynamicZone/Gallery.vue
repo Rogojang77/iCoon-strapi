@@ -103,7 +103,7 @@ const { media, section_classes } = defineProps({
 
 :deep(.gallery_swiper .swiper-slide) {
   opacity: 40%;
-  margin-right: 8px;
+  margin-right: 14px;
 }
 
 :deep(.gallery_swiper .swiper-slide-next) {
