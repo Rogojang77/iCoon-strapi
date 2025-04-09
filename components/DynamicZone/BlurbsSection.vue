@@ -27,13 +27,12 @@ const { heading, sub_heading, blurbs, columns_per_row, section_classes, nuxt_ui_
   },
 });
 
-console.log(!(blurbs[1].heading === null && blurbs[1].text === null))
 
 // Dynamic UI configurations
 const headingConfigString = {}
 const subHeadingConfigString = {}
 
-const gridClass = computed(() => `container sm:container mx-auto grid justify-center justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-6 sm:gap-4`);
+const gridClass = computed(() => `container-md sm:container mx-0 lg:mx-auto grid justify-center justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-${columns_per_row} gap-20 sm:gap-30`);
 
 </script>
 
@@ -41,22 +40,22 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
   <UContainer 
     :ui="{
       strategy: 'override',
-      base: '',
+      base: 'font-[Montserrat-Light]',
       padding: ''
     }"
   >
     <div v-if="heading || sub_heading" class="text-center mb-8 mx-auto">
-      <Heading v-if="heading" :class="headingConfigString">
+      <Heading v-if="heading" :className="headingConfigString || 'text-center sm:text-left mb-10'">
         {{ heading }}
       </Heading>
-      <SubHeading v-if="sub_heading" :class="subHeadingConfigString">
+      <SubHeading v-if="sub_heading" :className="subHeadingConfigString || 'text-center sm:text-left text-lg font-medium'">
         {{ sub_heading }}
       </SubHeading>
     </div>
     <UContainer
       :ui="{
         strategy: 'override',
-        base: [section_classes, gridClass,],
+        base: [gridClass, section_classes],
         padding: 'px-8 xl:px-0',
       }"
     >
@@ -86,7 +85,7 @@ const gridClass = computed(() => `container sm:container mx-auto grid justify-ce
           </Heading>
           <p
             v-if="blurb.text"
-            class="text-center text-slate-800 mb-4"
+            class="text-slate-800 mb-4"
           >
             {{ blurb.text }}
           </p>

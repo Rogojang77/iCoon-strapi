@@ -1,5 +1,6 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css/effect-coverflow';
 import { Pagination, Navigation, Scrollbar } from "swiper/modules";
 
 import "swiper/css";
@@ -17,6 +18,22 @@ const { media, section_classes } = defineProps({
     default: "",
   }
 });
+
+const swiperRef = ref(null);
+
+const isAtStart = ref(true);
+const isAtEnd = ref(false);
+
+const onReachEnd = () => {
+  isAtEnd.value = true;
+  isAtStart.value = false;
+};
+
+const onReachBeginning = () => { 
+  isAtEnd.value = false;
+  isAtStart.value = true;
+};
+
 </script>
 
 <template>
@@ -29,6 +46,14 @@ const { media, section_classes } = defineProps({
     <swiper
       ref="swiperRef"
       :modules="[Pagination, Navigation, Scrollbar]"
+      :centeredSlides="false"
+      :coverflowEffect="{
+        rotate: 0,
+        stretch: 0,
+        depth: 0,
+        modifier: 1,
+
+      }"
       :breakpoints="{
         480: {
           slidesPerView: 2
@@ -45,13 +70,16 @@ const { media, section_classes } = defineProps({
         prevEl: '.prev_button',
         enabled: true
       }"
+      @reachEnd="onReachEnd"
+      @reachBeginning="onReachBeginning"
       class="gallery_swiper flex items-center justify-center"
     >
-      <swiper-slide v-for="(item, index) in media" :key="index">
+      <swiper-slide v-for="(item, index) in media" :key="index" :id="index">
         <NuxtPicture
           :src="useStrapiImage(item.image.url)"
           :alt="item.alt || 'Media Image'"
-          class="object-cover overflow-hidden" 
+          :img-attrs="{ class: 'min-h-[400px]' }"
+          class="object-cover min-h-[400px]" 
         />
         <h3 v-if="item.title" class="text-lg font-bold mt-2">
           {{ item.title }}
@@ -61,16 +89,14 @@ const { media, section_classes } = defineProps({
         </p>
       </swiper-slide>
     </swiper>
-    <div class="flex justify-between">
+    <div :class="['flex', isAtEnd ? 'justify-start' : isAtStart ? 'justify-end' : 'justify-between']">
       <UButton
-        :ui="{
-          base: 'focus:outline-none'
-        }"
         variant="ghost"
-        size="lg"
+        size="md"
         color="black"
         class="prev_button"
-        :trailing="false"
+        :class="{ hidden: isAtStart }"
+        :trailing="false" 
       >
         <template #leading>
           <UIcon name="i-material-symbols-play-circle" class="rotate-180 w-8 h-8" />
@@ -78,13 +104,11 @@ const { media, section_classes } = defineProps({
         SCROLL TO LEFT
       </UButton>
       <UButton
-        :ui="{
-          base: 'focus:outline-none'
-        }"
         variant="ghost"
         size="md"
         color="black"
         class="next_button"
+        :class="{ hidden: isAtEnd }"
       >
         <template #trailing>
           <UIcon name="i-material-symbols-play-circle" class="w-8 h-8" />
@@ -98,12 +122,17 @@ const { media, section_classes } = defineProps({
 <style scoped>
 :deep(.swiper.gallery_swiper) {
   width: 100%;
-  padding: 4%;
+  padding-top: 10px;
+  margin: 0 -15px;
+}
+
+:deep(.swiper.gallery_swiper .swiper-slide#4) {
+  display: hidden;
 }
 
 :deep(.gallery_swiper .swiper-slide) {
   opacity: 40%;
-  margin-right: 14px;
+  padding: 15px;
 }
 
 :deep(.gallery_swiper .swiper-slide-next) {
@@ -116,14 +145,14 @@ const { media, section_classes } = defineProps({
 
 :deep(.gallery_swiper .swiper-slide-active) {
   opacity: 1;
-  transform: scale(1.1);
-  margin-right: 25px;
+  padding: 15px;
+  transform: scale(1);
   transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
-
 :deep(.gallery_swiper .swiper-slide img) {
   display: block;
   width: 100%;
+  min-height: 500px;
   object-fit: cover;
   border: 4px solid white;
   border-radius: 10px;
@@ -142,7 +171,7 @@ const { media, section_classes } = defineProps({
 
   :deep(.gallery_swiper .swiper-slide) {
     opacity: 40%;
-    margin-right: 8px;
+    transform: scale(0.9);
   }
 
   :deep(.gallery_swiper .swiper-slide-next) {
@@ -155,14 +184,15 @@ const { media, section_classes } = defineProps({
 
   :deep(.gallery_swiper .swiper-slide-active) {
     opacity: 1;
-    transform: scale(1.1);
-    margin-right: 25px;
+    transform: scale(1);
+    margin-right: 1%;
     transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
   }
 
   :deep(.gallery_swiper .swiper-slide img) {
     display: block;
     width: 100%;
+    min-height: 400px;
     object-fit: cover;
     border: 4px solid white;
     border-radius: 10px;
@@ -196,6 +226,7 @@ const { media, section_classes } = defineProps({
   :deep(.gallery_swiper .swiper-slide img) {
     display: block;
     width: 100%;
+    min-height: 300px;
     object-fit: cover;
     border: 4px solid white;
     border-radius: 10px;

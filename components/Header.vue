@@ -86,37 +86,6 @@
       </div>
 
       <div class="flex items-center space-x-4">
-        
-        <!-- <div class="relative language-dropdown">
-          <UButton 
-            :ui="{ rounded: 'rounded-full', base: 'bg-gray-200 hover:bg-gray-300' }" 
-            @click="toggleLanguageDropdown" 
-          >
-            {{ selectedLanguage }}
-          </UButton>
-          
-          <ul v-if="isLanguageDropdownOpen" class="absolute right-0 mt-2 w-32 bg-white dark:bg-slate-800 border border-gray-200 rounded-md shadow-lg z-50">
-            <li>
-              <NuxtLink 
-                :to="switchLocalePath('en')" 
-                class="block rounded-t-lg px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-900"
-                @click="selectLanguage('EN')"
-              >
-                EN
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink 
-                :to="switchLocalePath('de')" 
-                class="block px-4 rounded-b-lg py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-900"
-                @click="selectLanguage('DE')"
-              >
-                DE
-              </NuxtLink>
-            </li>
-          </ul>
-        </div> -->
-
         <div v-if="!isMobileMenuOpen" class="hidden md:flex space-x-2">
           <UButton
             v-for="(item, index) in right_navbar_items"
@@ -131,18 +100,6 @@
           >
             {{ item.text }}
           </UButton>
-          <ClientOnly>
-            <UButton
-              :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-              color="gray"
-              variant="ghost"
-              aria-label="Theme"
-              @click="isDark = !isDark"
-            />
-            <template #fallback>
-              <div class="w-8 h-8" />
-            </template>
-          </ClientOnly>
         </div>
       </div>
       <UButton  @click="toggleMobileMenu" class="md:hidden" variant="ghost" >

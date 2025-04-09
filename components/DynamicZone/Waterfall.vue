@@ -87,7 +87,7 @@ function getColumnWidthClasses(columnWidth) {
           singleColumn.value ? 'flex-col' : 'flex items-center', 
           mirror ? 'flex items-center flex-col sm:flex-row-reverse' : 'flex items-center flex-col lg:flex-row', 
         ],
-        padding: fullWidth ? 'px-0 py-24' : '',
+        padding: fullWidth ? 'px-0 py-12 lg:py-24' : '',
       }"
     >
         <!-- Col -->
@@ -121,7 +121,7 @@ function getColumnWidthClasses(columnWidth) {
           </UButton>
         </div>
         <!-- Media -->
-        <div v-if="column.media" class="w-full h-full"> 
+        <div v-if="column.media" class="w-full"> 
           <!-- <div v-if="column.media[0].image.mime.includes('video')" class="w-full h-full">
             <video v-for="(item, index) in column.media" :key="index"
               type='video/mp4'
@@ -139,7 +139,7 @@ function getColumnWidthClasses(columnWidth) {
               :src="useStrapiImage(item.url)"
               :alt="item.alt || 'Media Image'"
               :class="column.media.img_attrs.class ? column.media.img_attrs.class : 'overflow-hidden w-full'"
-              :img-attrs="column.media.img_attrs ? column.media.img_attrs : { class: 'object-cover object-center w-full h-full' }"
+              :img-attrs="column.media.img_attrs ? column.media.img_attrs : { class: 'object-cover object-center w-full' }"
             />
           </UCarousel>
         </div>

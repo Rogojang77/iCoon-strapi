@@ -71,24 +71,25 @@ export default defineAppConfig({
     button: {
       default: {
         size: 'md',
-        color: 'blue',
+        color: 'black',
         variant: 'solid',
         rounded: 'rounded-md',
       },
-      base: "focus:outline-none focus:ring-2 transition ease-in-out duration-150",
+      base: "focus:outline-none focus:ring-2 transition flex ease-in-out duration-150",
       font: "text-sm",
       size: {
+        xl: "px-10 py-2",
         lg: "px-6 py-3",
         md: "px-4 py-2",
         sm: "px-3 py-1.5"
       },
       color: {
-        primary: {
-          solid: "bg-primary-500 text-white dark:text-neutral-900 hover:bg-primary-600 dark:bg-primary-500",
-          outline: "text-primary-500 dark:text-neutral-900 border-2 border-primary-500 hover:bg-primary-50 dark:border-primary-500"
+        black: {
+          solid: "bg-black text-white hover:bg-black",
+          outline: "text-black dark:text-neutral-900 border-2 border-black hover:bg-black dark:border-black"
         },
         secondary: {
-          solid: "bg-secondary-500 text-white  dark:text-neutral-900 hover:bg-secondary-600 dark:bg-secondary-500",
+          solid: "bg-secondary-500 text-white dark:text-neutral-900 hover:bg-secondary-600 dark:bg-secondary-500",
           outline: "text-secondary-500 dark:text-neutral-900 border-2 border-secondary-500 hover:bg-secondary-500 dark:border-secondary-500"
         }
       },
@@ -104,7 +105,7 @@ export default defineAppConfig({
         rounded: 'rounded-lg',
         background: "bg-white-500 dark:bg-slate-800",
       },
-      base: "overflow-hidden rounded-lg text-primary-500 dark:text-slate-400 bg-white-500 dark:bg-neutral-800",
+      base: "overflow-hidden rounded-lg text-black dark:text-slate-400 bg-white-500 dark:bg-neutral-800",
       body: {
         base: "",
         padding: "px-4 pt-2 pb-0 sm:p-6",
@@ -141,16 +142,21 @@ export default defineAppConfig({
       indicators: {
         wrapper: 'absolute flex items-center justify-center gap-3 bottom-4 inset-x-0',
         base: 'h-3 w-3',
-        active: 'bg-primary-500 dark:bg-primary-400',
+        active: 'bg-black dark:bg-black',
         inactive: 'bg-gray-100 dark:bg-gray-800'
       },
     },
 
     // Checkbox
     checkbox: {
+      variants: {
+        color: {
+          black: 'focus-visible:outline-(--ui-black)'
+        }
+      },
       default: {
         size: 'md',
-        color: 'blue',
+        color: 'black',
       },
     },
 
@@ -258,10 +264,10 @@ export default defineAppConfig({
     // Input
     input: {
       wrapper: 'relative',
-      base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 text-slate-900 dark:text-slate-300',
+      base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:ring-black border-0 text-slate-900 dark:text-slate-300',
       form: 'form-input',
       rounded: 'rounded-md',
-      placeholder: 'placeholder-slate-900 dark:placeholder-slate-400',
+      placeholder: 'placeholder-black font-500',
       file: {
         base: 'file:mr-1.5 file:font-medium file:text-slate-900 dark:file:text-slate-400 file:bg-transparent file:border-0 file:p-0 file:outline-none'
       },
@@ -311,11 +317,11 @@ export default defineAppConfig({
       },
       color: {
         slate: {
-          outline: 'shadow-sm bg-slate-100 dark:bg-slate-800 text-slate-500 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-primary-500'
+          outline: 'shadow-sm bg-transparent text-black ring-1 ring-inset ring-black focus:ring-1 focus:ring-inset focus:ring-black'
         }
       },
       variant: {
-        outline: 'shadow-sm bg-transparent text-slate-500 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-primary-500',
+        outline: 'shadow-sm bg-transparent text-black ring-1 ring-inset ring-black focus:ring-1 focus:ring-inset focus:ring-black',
         none: 'bg-transparent focus:ring-0 focus:shadow-none'
       },
       icon: {
@@ -547,11 +553,11 @@ export default defineAppConfig({
       },
       color: {
         slate: {
-          outline: 'shadow-sm bg-slate-200 dark:bg-slate-700 text-slate-500 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-primary-500'
+          outline: 'shadow-sm bg-transparent text-black ring-1 ring-inset ring-black focus:ring-1 focus:ring-inset focus:ring-black'
         }
       },
       variant: {
-        outline: 'shadow-sm bg-transparent text-slate-500 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-primary-500',
+        outline: 'shadow-sm bg-transparent text-black ring-1 ring-inset ring-black focus:ring-1 focus:ring-inset focus:ring-black',
         none: 'bg-transparent focus:ring-0 focus:shadow-none'
       },
       default: {
