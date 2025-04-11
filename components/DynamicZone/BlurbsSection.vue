@@ -3,11 +3,11 @@
 const { heading, sub_heading, blurbs, columns_per_row, section_classes, nuxt_ui_configs } = defineProps({
   heading: {
     type: String,
-    default: "Our Features",
+    default: "",
   },
   sub_heading: {
     type: String,
-    default: "Explore the key benefits we offer",
+    default: "",
   },
   blurbs: {
     type: Array,
@@ -56,7 +56,7 @@ const gridClass = computed(() => `container-md sm:container mx-0 lg:mx-auto grid
       :ui="{
         strategy: 'override',
         base: [gridClass, section_classes],
-        padding: 'px-8 xl:px-0',
+        padding: 'px-8',
       }"
     >
       <!-- Blurbs Section -->
